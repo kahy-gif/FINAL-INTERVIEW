@@ -1,0 +1,131 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    color: #1a1a1a;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.scroll-container {
+    position: relative;
+    height: 300vh;
+}
+
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+#loop-video {
+    opacity: 0;
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ddd;
+}
+
+main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    color: #fcfaf2;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fcfaf2;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #fcfaf2;
+    opacity: 1;
+    transform: translateY(0);
+    line-height: 1.8;
+}
+
+.chapter-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.section {
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.dialogue {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-left: 5px solid #333;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.dialogue strong {
+    color: #007bff;
+}

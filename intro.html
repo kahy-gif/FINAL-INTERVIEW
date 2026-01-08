@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>菊池智也さんインタビュー - イントロ</title>
+    <link rel="stylesheet" href="intro.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- スクロール領域を確保するためのコンテナ -->
+    <div class="scroll-container">
+        <!-- 動画コンテナ: position: fixedでその場に固定 -->
+        <div class="video-container">
+            <!-- スクロール連動動画 -->
+            <!-- muted: 自動再生ポリシー対策（ミュートでないと自動再生できない） -->
+            <!-- playsinline: iOSで全画面表示にならないようにする（ページ内で再生） -->
+            <!-- preload="auto": スクラブをスムーズにするため事前に動画を読み込む -->
+            <video id="scroll-video" class="video" src="カラスの完成.mp4" muted playsinline preload="auto"></video>
+            
+            <!-- ループ動画: テキスト表示中に背景で流れる -->
+            <video id="loop-video" class="video" src="カラスが飛ぶ.mp4" muted playsinline preload="auto" loop></video>
+        </div>
+
+        <!-- テキストコンテンツ: 動画の上に重ねて表示 -->
+        <div class="content-overlay">
+            <header>
+                <nav>
+                    <a href="intro.html">イントロ</a>
+                    <a href="chapter1.html">第一章</a>
+                    <a href="chapter2.html">第二章</a>
+                    <a href="chapter3.html">第三章</a>
+                    <a href="current_future.html">現在そして未来へ</a>
+                </nav>
+            </header>
+            <main>
+        <section id="intro">
+            <h1 class="title">菊池智也さんインタビュー：波乱万丈な人生と「人間」を探求する旅</h1>
+            <p class="subtitle">はじめに</p>
+            <p class="content">今回は、茨城県出身の菊池智也さんにインタビュー！その波乱万丈な人生経験、現在の活動に至るまでの道のり、そして独自の哲学について、じっくりとお話を聞かせてもらいました。</p>
+            <p class="content">厳格な家庭環境、美大への進学、画家への夢、そして半ば強制的な形でお坊さんとしての人生を歩むことになった菊池さん。その中で見つけた「人間として生きる」ことの真髄とは何だったのか？この記事では、菊池さんの言葉を通して、その奥深い哲学に迫ります。</p>
+            <div class="profile">
+                <h2>インタビュイー： 菊池 智也（きくち ともや）</h2>
+                <p>昭和 34 年 9 月 8 日生まれ。茨城県出身。美大卒業後、デザイナーとして活動。その後、予期せぬ出来事をきっかけに仏門に入り、お坊さんに。現在は、お坊さんとしての活動の傍ら、絵画、文章執筆、演劇など、多岐にわたる表現活動を展開しています。</p>
+                <p>インタビュアー： B</p>
+            </div>
+        </section>
+    </main>
+        </div>
+    </div>
+    <script src="intro.js"></script>
+</body>
+</html>
