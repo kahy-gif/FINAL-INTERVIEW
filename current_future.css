@@ -74,3 +74,22 @@ main {
 p {
     margin-bottom: 1rem;
 }
+
+.narrative {
+    margin-bottom: 1.5rem;
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    line-height: 2;
+    color: #333;
+    opacity: 0;
+    transform: translateY(30px);
+    text-indent: 1em;
+}
+
+.narrative.ending {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 3rem;
+    text-indent: 0;
+}

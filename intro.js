@@ -1,93 +1,137 @@
 document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // 動画要素の取得
+    // ===== 要素の取得 =====
     const scrollVideo = document.getElementById('scroll-video');
-    const loopVideo = document.getElementById('loop-video');
+    const secondVideo = document.getElementById('loop-video');
     const contentOverlay = document.querySelector('.content-overlay');
 
-    // 動画のメタデータ読み込み完了を待つ
-    // loadedmetadataイベント: 動画のduration（長さ）が取得できるようになるタイミング
-    // これを待たないとスクロール量とのマッピングがズレてしまう
-    scrollVideo.addEventListener('loadedmetadata', () => {
-        const videoDuration = scrollVideo.duration; // 動画の長さ（秒）を取得
+    // ===== 状態管理 =====
+    let currentPhase = 1;
+    let isVideoEnded = false;
 
-        // ScrollTriggerの初期化: スクロール連動動画の制御
+    console.log('🎬 Intro シーケンス開始');
+
+    // ===== フェーズ1: スクロール連動（Scrollytelling） =====
+    scrollVideo.addEventListener('loadedmetadata', () => {
+        const videoDuration = scrollVideo.duration;
+        console.log('📹 動画メタデータ読み込み完了。長さ:', videoDuration, '秒');
+
         ScrollTrigger.create({
-            trigger: '.scroll-container', // トリガー要素
-            start: 'top top', // スクロール開始位置
-            end: '50% top', // スクロール中間地点で動画スクラブ終了
-            scrub: true, // スクロール位置と動画再生位置を連動
+            trigger: '.scroll-container',
+            start: 'top top',
+            end: '50% top',
+            scrub: true,
             onUpdate: (self) => {
-                // スクロール進行度（0.0 ~ 1.0）に応じて動画の再生位置を更新
                 const progress = self.progress;
                 const currentTime = videoDuration * progress;
-
-                // フレームレートに合わせて丸める（15fps → 1/15秒単位）
-                // これにより、currentTimeの細かい変動によるチラつき（Flicker）を抑制
                 scrollVideo.currentTime = Math.round(currentTime * 15) / 15;
+                
+                if (currentPhase === 1 && progress > 0.01) {
+                    console.log('⏩ フェーズ1: スクロール連動中 (' + Math.round(progress * 100) + '%)');
+                    currentPhase = 1.5;
+                }
             },
             onLeave: () => {
-                // スクロールが中間地点に到達したときの処理
-                // スクロール連動動画をフェードアウト
+                console.log('✅ フェーズ1 完了: スクロール連動終了');
+                currentPhase = 2;
+                
                 gsap.to(scrollVideo, { 
                     opacity: 0, 
-                    duration: 1 
+                    duration: 1,
+                    onComplete: () => {
+                        console.log('🎥 スクロール連動動画フェードアウト完了');
+                    }
                 });
                 
-                // ループ動画をフェードインして再生開始（その場で切り替え）
-                gsap.to(loopVideo, { 
+                gsap.to(secondVideo, { 
                     opacity: 1, 
                     duration: 1, 
-                    onComplete: () => loopVideo.play() // フェードイン完了後に再生
-                });
-
-                // テキストコンテンツをフェードイン（動画の上に重ねて表示）
-                gsap.to(contentOverlay, {
-                    opacity: 1,
-                    duration: 1.5,
-                    delay: 0.5,
-                    onStart: () => {
-                        contentOverlay.style.pointerEvents = 'auto'; // クリック可能にする
+                    onComplete: () => {
+                        console.log('▶️ 第2動画再生開始');
+                        secondVideo.play();
                     }
                 });
             }
         });
     });
 
-    // タイトルアニメーション
-    gsap.to('.title', {
-        duration: 1,
-        opacity: 1,
-        y: 0,
-        ease: 'power2.out'
+    // ===== 第2動画の終了イベント =====
+    secondVideo.addEventListener('ended', () => {
+        console.log('🛑 フェーズ2 完了: 第2動画が最後のフレームで停止');
+        isVideoEnded = true;
+        currentPhase = 3;
+
+        // ===== フェーズ3: ダイナミック・フォーカス発動 =====
+        console.log('🌫️ フェーズ3 開始: ダイナミック・フォーカス適用');
+        
+        gsap.to(secondVideo, {
+            duration: 1.5,
+            ease: 'power2.inOut',
+            onUpdate: function() {
+                const progress = this.progress();
+                const blurAmount = 8 * progress;
+                const brightnessAmount = 1 - (0.4 * progress);
+                secondVideo.style.filter = `blur(${blurAmount}px) brightness(${brightnessAmount})`;
+            },
+            onComplete: () => {
+                console.log('✨ フェーズ3 完了: ダイナミック・フォーカス適用完了');
+                currentPhase = 4;
+                
+                // ===== フェーズ4: テキストのフェードイン =====
+                console.log('📝 フェーズ4 開始: テキストフェードイン');
+                
+                gsap.to(contentOverlay, {
+                    opacity: 1,
+                    duration: 2,
+                    ease: 'power2.out',
+                    onStart: () => {
+                        contentOverlay.style.pointerEvents = 'auto';
+                    },
+                    onComplete: () => {
+                        console.log('🎉 フェーズ4 完了: すべてのシーケンス終了');
+                        animateTextElements();
+                    }
+                });
+            }
+        });
     });
 
-    // サブタイトルアニメーション
-    gsap.to('.subtitle', {
-        duration: 1,
-        opacity: 1,
-        y: 0,
-        ease: 'power2.out',
-        delay: 0.5
-    });
+    // ===== テキスト要素のアニメーション =====
+    function animateTextElements() {
+        gsap.fromTo('.title', 
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1.5, ease: 'power2.out' }
+        );
 
-    // コンテンツアニメーション
-    gsap.to('.content', {
-        duration: 1,
-        opacity: 1,
-        y: 0,
-        ease: 'power2.out',
-        delay: 1,
-        stagger: 0.3
-    });
+        gsap.fromTo('.subtitle', 
+            { opacity: 0, y: 50 },
+            { opacity: 1, y: 0, duration: 1.5, delay: 0.3, ease: 'power2.out' }
+        );
 
-    // プロフィールアニメーション
-    gsap.to('.profile', {
-        duration: 1,
-        opacity: 1,
-        y: 0,
-        ease: 'power2.out',
-        delay: 2
+        gsap.fromTo('.content', 
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 1, stagger: 0.2, delay: 0.6, ease: 'power2.out' }
+        );
+
+        console.log('📄 テキストアニメーション開始');
+    }
+
+    // ===== デバッグ情報 =====
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'd' && e.ctrlKey) {
+            e.preventDefault();
+            console.log('🔍 デバッグ情報:');
+            console.log('  現在のフェーズ:', currentPhase);
+            console.log('  第2動画終了:', isVideoEnded);
+            console.log('  コンテンツオーバーレイの透明度:', contentOverlay.style.opacity);
+        }
+        
+        if (e.key === '3' && e.ctrlKey) {
+            e.preventDefault();
+            console.log('⚡ フェーズ3へ強制スキップ（テスト用）');
+            secondVideo.currentTime = secondVideo.duration - 0.1;
+            secondVideo.play();
+        }
     });
 });

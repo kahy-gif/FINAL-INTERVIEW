@@ -29,6 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.2
     });
 
+    // 物語（narrative）アニメーション
+    gsap.to('.narrative', {
+        duration: 0.8,
+        opacity: 1,
+        y: 0,
+        ease: 'power2.out',
+        delay: 1,
+        stagger: 0.15
+    });
     // スクロールトリガー
     gsap.to('#current_future', {
         scrollTrigger: {

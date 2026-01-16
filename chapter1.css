@@ -2,13 +2,64 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #1a1a1a;
+    color: #1a1a1a;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* スクロール領域: 実際のスクロールを可能にするが、見た目はその場で変化 */
+.scroll-container {
+    position: relative;
+    height: 300vh; /* スクロール量を確保（3倍の高さ） */
+}
+
+/* 動画コンテナ: 固定配置でその場に固定 */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* コンテンツオーバーレイ: 動画の上に重ねて表示 */
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    opacity: 0; /* 初期状態では非表示 */
+    pointer-events: none; /* 初期状態ではクリック不可 */
+    overflow-y: auto; /* 縦スクロールを有効化 */
+}
+
+/* 動画要素: フルスクリーン表示 */
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* アスペクト比を保ちながら画面を埋める */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    filter: blur(0px) brightness(1);
+    will-change: filter; /* パフォーマンス最適化 */
+}
+
+/* ループ動画は初期状態で非表示 */
+#loop-video {
+    opacity: 0;
 }
 
 header {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8);
+    backdrop-filter: blur(10px);
     padding: 1rem;
     text-align: center;
 }
@@ -18,6 +69,7 @@ nav a {
     margin: 0 1rem;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
@@ -28,39 +80,40 @@ main {
     max-width: 800px;
     margin: 2rem auto;
     padding: 2rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    color: #fcfaf2;
+    min-height: calc(100vh - 4rem); /* 最低限の高さを確保 */
 }
 
-.chapter-title {
+.title {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
+    color: #fcfaf2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
     opacity: 0;
     transform: translateY(50px);
 }
 
-.section {
-    margin-bottom: 2rem;
+.scene {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+
+.scene[data-scene]:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    color: #f5f5f5;
+    line-height: 2;
+    text-indent: 1em;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
     opacity: 0;
-    transform: translateY(50px);
-}
-
-.section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.dialogue {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    background-color: #f9f9f9;
-    border-left: 5px solid #333;
-    opacity: 0;
-    transform: translateX(-50px);
-}
-
-.dialogue strong {
-    color: #007bff;
+    transform: translateY(30px);
 }

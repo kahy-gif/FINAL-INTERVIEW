@@ -35,6 +35,7 @@ body {
     z-index: 2;
     opacity: 0; /* 初期状態では非表示 */
     pointer-events: none; /* 初期状態ではクリック不可 */
+    overflow-y: auto; /* 縦スクロールを有効化 */
 }
 
 /* 動画要素: フルスクリーン表示 */
@@ -47,6 +48,8 @@ body {
     object-fit: cover; /* アスペクト比を保ちながら画面を埋める */
     opacity: 1;
     transition: opacity 1s ease-in-out;
+    filter: blur(0px) brightness(1);
+    will-change: filter; /* パフォーマンス最適化 */
 }
 
 /* ループ動画は初期状態で非表示 */
@@ -82,49 +85,36 @@ main {
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     border-radius: 10px;
     color: #fcfaf2;
+    min-height: calc(100vh - 4rem); /* 最低限の高さを確保 */
 }
 
 .title {
     font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: #fcfaf2;
-    opacity: 1;
-    transform: translateY(0);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .subtitle {
     font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     color: #d4af37;
-    opacity: 1;
-    transform: translateY(0);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transform: translateY(50px);
 }
 
 .content {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: #fcfaf2;
-    opacity: 1;
-    transform: translateY(0);
-    line-height: 1.8;
-}
-
-.profile {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.profile h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #d4af37;
-}
-
-.profile p {
-    margin-bottom: 0.5rem;
-    color: #fcfaf2;
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+    color: #f5f5f5;
+    line-height: 2;
+    text-indent: 1em;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    transform: translateY(30px);
 }
