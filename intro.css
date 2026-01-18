@@ -58,27 +58,60 @@ body {
 }
 
 header {
-    background-color: rgba(51, 51, 51, 0.8);
+    background-color: #C76D04;
+    padding: 1.5rem 3rem 1.5rem 8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
     backdrop-filter: blur(10px);
-    padding: 1rem;
-    text-align: center;
+    border-bottom-left-radius: 120px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 nav a {
     color: #fff;
-    margin: 0 1rem;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
-    color: #ddd;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 main {
     max-width: 1400px;
-    margin: 2rem auto;
+    margin: 6rem auto 2rem auto;
     padding: 3rem 8rem;
     background-color: rgba(230, 230, 230, 0.95);
     background-image: repeating-linear-gradient(
@@ -93,7 +126,7 @@ main {
     color: #2a2a2a;
     display: flex;
     align-items: center;
-    min-height: calc(100vh - 4rem);
+    min-height: calc(100vh - 8rem);
 }
 
 .title {
@@ -157,4 +190,15 @@ main {
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+}
+
+/* 最後のメッセージ用スタイル */
+.final-message {
+    text-align: center !important;
+    padding-left: 0 !important;
+    font-size: 1.85rem;
+    font-weight: 600;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    line-height: 3rem;
 }
