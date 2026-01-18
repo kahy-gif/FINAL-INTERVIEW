@@ -3,57 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>菊池智也さんインタビュー - 現在そして未来へ</title>
+    <title>菊池智也さんインタビュー - エピローグ</title>
     <link rel="stylesheet" href="current_future.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="intro.html">イントロ</a>
-            <a href="chapter1.html">第一章</a>
-            <a href="chapter2.html">第二章</a>
-            <a href="chapter3.html">第三章</a>
-            <a href="current_future.html">現在そして未来へ</a>
-        </nav>
-    </header>
-    <main>
-        <section id="current_future">
-            <h1 class="chapter-title">エピローグ：人間を探求する旅へ</h1>
-            <div class="section">
-                <p class="narrative">7年間の修行を終え、師から「世の中に出て人と会え」と背中を押された智也は、水を得た魚のように活動を始めた。</p>
-                <p class="narrative">かつての芸術への情熱を取り戻し、演劇、写真、映画と、様々なジャンルの人々と交流を深めた。</p>
-                <p class="narrative">だが、人生の荒波はまだ終わらない。</p>
-                <p class="narrative">あまりに精力的すぎた代償か、彼は「ギラン・バレー症候群」という難病に倒れる。全身の筋肉が麻痺し、動けなくなる病だ。</p>
-                <p class="narrative">しかし、その病床で彼が見たものは、絶望ではなく「光」だった。</p>
-                <p class="narrative">医師、看護師、清掃員。下の世話をしてくれる人々。</p>
-                <p class="narrative">かつて「自分一人の力で生きている」と信じ、「闇夜のカラス」のように周りが見えていなかった自分の姿に、彼は気づかされた。</p>
-                <p class="narrative">「人は、つながりの中で生かされている」</p>
-                <p class="narrative">その温かい事実は、修行時代の悟りとはまた違う、柔らかな衝撃として彼を変えた。</p>
+    <!-- スクロール領域を確保するためのコンテナ -->
+    <div class="scroll-container">
+        <!-- 動画コンテナ: position: fixedでその場に固定 -->
+        <div class="video-container">
+            <!-- スクロール連動動画 -->
+            <video id="scroll-video" class="video" src="tabaco_ing.mp4" muted playsinline preload="auto"></video>
+            
+            <!-- 第2動画: 最後のフレームで停止 -->
+            <video id="loop-video" class="video" src="tabakokara.mp4" muted playsinline preload="auto"></video>
+        </div>
+
+        <!-- テキストコンテンツ: 動画の上に重ねて表示 -->
+        <div class="content-overlay">
+            <div class="scroll-indicator" id="scroll-indicator">
+                <div class="scroll-text">スクロールしてください</div>
+                <div class="scroll-arrow">↓</div>
             </div>
-            <div class="section">
-                <p class="narrative">現在、菊池智也は、お坊さんとしての活動の傍ら、絵を描き、演じ、書き続けている。</p>
-                <p class="narrative">彼の目標は「宗教からの自立」だ。</p>
-                <p class="narrative">お坊さんという特権的な高みから説法をするのではない。泥臭い大衆の中に飛び込み、同じ目線で笑い、泣き、感動する。</p>
-                <p class="narrative">「お坊さん」という肩書きを脱ぎ捨て、ただの「人間」として生きたい。</p>
-                <p class="narrative">トイレ掃除をするおばあちゃんの背中に、下水道工事で汗を流す人々の姿に、尊さを見出せる自分でありたい。それが今の彼の祈りだ。</p>
-            </div>
-            <div class="section">
-                <p class="narrative">もし今、彼がタイムマシンに乗って、あの頃の自分に会えるとしたら。</p>
-                <p class="narrative">強制的に出家させられ、夢を絶たれた若き日の自分に、彼はこう声をかけるだろう。</p>
-                <p class="narrative">「おい、やっぱりスペインに行ってもよかったんじゃねえか？」</p>
-                <p class="narrative">そう言って笑うかもしれない。</p>
-                <p class="narrative">だが、その笑顔には一点の曇りもないだろう。なぜなら、回り道に見えたその全てが、今の「菊池智也」という人間を作り上げる、かけがえのない絵の具だったのだから。</p>
-            </div>
-            <div class="section">
-                <p class="narrative">波乱万丈な人生のキャンバスには、これからも彼自身の手によって、鮮やかな色が塗り重ねられていく。</p>
-                <p class="narrative">怖がらず、動け。</p>
-                <p class="narrative">運命を、運べ。</p>
-                <p class="narrative ending">（終）</p>
-            </div>
-        </section>
-    </main>
+            <header>
+                <nav>
+                    <a href="intro.html">イントロ</a>
+                    <a href="chapter1.html">第一章</a>
+                    <a href="chapter2.html">第二章</a>
+                    <a href="chapter3.html">第三章</a>
+                    <a href="current_future.html" class="active">エピローグ</a>
+                </nav>
+            </header>
+            <main>
+                <section id="current_future">
+                    <h1 class="title">エピローグ：人間を探求する旅へ</h1>
+                    
+                    <div class="text-content">
+                        <p class="content indent-1">7年間の修行を終え、師から「世の中に出て人と会え」と背中を押された智也は、水を得た魚のように活動を始めた。</p>
+                        
+                        <p class="content indent-2">かつての芸術への情熱を取り戻し、演劇、写真、映画と、様々なジャンルの人々と交流を深めた。</p>
+                        
+                        <p class="content indent-3">だが、人生の荒波はまだ終わらない。</p>
+                        
+                        <p class="content indent-1">あまりに精力的すぎた代償か、彼は「ギラン・バレー症候群」という難病に倒れる。全身の筋肉が麻痺し、動けなくなる病だ。</p>
+                        
+                        <p class="content indent-2">しかし、その病床で彼が見たものは、絶望ではなく「光」だった。</p>
+                        
+                        <p class="content indent-4">医師、看護師、清掃員。下の世話をしてくれる人々。</p>
+                        
+                        <p class="content indent-3">かつて「自分一人の力で生きている」と信じ、「闇夜のカラス」のように周りが見えていなかった自分の姿に、彼は気づかされた。</p>
+                        
+                        <p class="content indent-5 dialogue emphasis">「人は、つながりの中で生かされている」</p>
+                        
+                        <p class="content indent-2">その温かい事実は、修行時代の悟りとはまた違う、柔らかな衝撃として彼を変えた。</p>
+                        
+                        <p class="content indent-1">現在、菊池智也は、お坊さんとしての活動の傍ら、絵を描き、演じ、書き続けている。</p>
+                        
+                        <p class="content indent-3">彼の目標は「宗教からの自立」だ。</p>
+                        
+                        <p class="content indent-2">お坊さんという特権的な高みから説法をするのではない。泥臭い大衆の中に飛び込み、同じ目線で笑い、泣き、感動する。</p>
+                        
+                        <p class="content indent-4">「お坊さん」という肩書きを脱ぎ捨て、ただの「人間」として生きたい。</p>
+                        
+                        <p class="content indent-1">トイレ掃除をするおばあちゃんの背中に、下水道工事で汗を流す人々の姿に、尊さを見出せる自分でありたい。それが今の彼の祈りだ。</p>
+                        
+                        <p class="content indent-3">もし今、彼がタイムマシンに乗って、あの頃の自分に会えるとしたら。</p>
+                        
+                        <p class="content indent-2">強制的に出家させられ、夢を絶たれた若き日の自分に、彼はこう声をかけるだろう。</p>
+                        
+                        <p class="content indent-5 dialogue">「おい、やっぱりスペインに行ってもよかったんじゃねえか?」</p>
+                        
+                        <p class="content indent-1">そう言って笑うかもしれない。</p>
+                        
+                        <p class="content indent-2">だが、その笑顔には一点の曇りもないだろう。なぜなら、回り道に見えたその全てが、今の「菊池智也」という人間を作り上げる、かけがえのない絵の具だったのだから。</p>
+                        
+                        <p class="content indent-3">波乱万丈な人生のキャンバスには、これからも彼自身の手によって、鮮やかな色が塗り重ねられていく。</p>
+                        
+                        <p class="content indent-4 emphasis">怖がらず、動け。</p>
+                        
+                        <p class="content indent-2 emphasis">運命を、運べ。</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
     <script src="current_future.js"></script>
 </body>
 </html>

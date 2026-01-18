@@ -1,95 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Yuji Syuku', serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #2a2a2a;
+    color: #1a1a1a;
     line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* スクロール領域: 実際のスクロールを可能にするが、見た目はその場で変化 */
+.scroll-container {
+    position: relative;
+    height: 300vh; /* スクロール量を確保（3倍の高さ） */
+}
+
+/* 動画コンテナ: 固定配置でその場に固定 */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* コンテンツオーバーレイ: 動画の上に重ねて表示 */
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    opacity: 0; /* 初期状態では非表示 */
+    pointer-events: none; /* 初期状態ではクリック不可 */
+    overflow-y: auto; /* 縦スクロールを有効化 */
+}
+
+/* 動画要素: フルスクリーン表示 */
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* アスペクト比を保ちながら画面を埋める */
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    filter: blur(0px) brightness(1);
+    will-change: filter; /* パフォーマンス最適化 */
+}
+
+/* ループ動画は初期状態で非表示 */
+#loop-video {
+    opacity: 0;
 }
 
 header {
-    background-color: #333;
-    padding: 1rem;
-    text-align: center;
+    background-color: #342C22;
+    padding: 1.5rem 3rem 1.5rem 8rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border-bottom-left-radius: 120px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 nav a {
     color: #fff;
-    margin: 0 1rem;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 1.15rem;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
-    color: #ddd;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a.active::after {
+    width: 100%;
+}
+
+/* スクロール指示 */
+.scroll-indicator {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1500;
+    text-align: center;
+    color: #fff;
+    font-size: 1rem;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-text {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.scroll-arrow {
+    font-size: 2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 1400px;
+    margin: 6rem auto 3rem auto;
+    padding: 3.5rem 8rem;
+    background-color: rgba(230, 230, 230, 0.95);
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 3.5rem,
+        rgba(180, 180, 180, 0.3) 3.5rem,
+        rgba(180, 180, 180, 0.3) calc(3.5rem + 1px)
+    );
+    backdrop-filter: blur(15px);
+    box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+    border-radius: 2px;
+    color: #2a2a2a;
+    min-height: calc(100vh - 6rem);
 }
 
-.chapter-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 2rem;
+.title {
+    font-size: 3rem;
+    text-align: left;
+    margin-bottom: 5rem;
+    padding-left: 3rem;
+    color: #1a1a1a;
+    font-weight: 500;
+    letter-spacing: 0.15em;
     opacity: 0;
     transform: translateY(50px);
 }
 
-.section {
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(50px);
+.text-content {
+    margin-top: 3rem;
 }
 
-.section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: #555;
-}
-
-.section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: #666;
-}
-
-.dialogue {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    background-color: #f9f9f9;
-    border-left: 5px solid #333;
-    opacity: 0;
-    transform: translateX(-50px);
-}
-
-.dialogue strong {
-    color: #007bff;
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-.narrative {
-    margin-bottom: 1.5rem;
-    padding: 0.8rem 0;
-    font-size: 1.1rem;
-    line-height: 2;
-    color: #333;
+.content {
+    font-size: 1.9rem;
+    margin-bottom: 3.5rem;
+    color: #2a2a2a;
+    line-height: 3.5rem;
+    text-align: left;
+    font-weight: 400;
+    letter-spacing: 0.05em;
     opacity: 0;
     transform: translateY(30px);
-    text-indent: 1em;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.narrative.ending {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 3rem;
-    text-indent: 0;
+/* ランダムインデント（階段状配置） */
+.indent-1 { padding-left: 2rem; }
+.indent-2 { padding-left: 5rem; }
+.indent-3 { padding-left: 8rem; }
+.indent-4 { padding-left: 11rem; }
+.indent-5 { padding-left: 3.5rem; }
+
+/* 会話文のスタイル */
+.dialogue {
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+/* 心の声 */
+.thought {
+    font-style: italic;
+    color: #4a4a4a;
+}
+
+/* 強調文 */
+.emphasis {
+    font-weight: 600;
+    font-size: 2.1rem;
+}
+
+/* マーカー風ハイライト */
+.highlight {
+    background: linear-gradient(transparent 60%, rgba(255, 240, 100, 0.6) 60%);
+    padding: 0.2em 0.3em;
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+
+/* 太字テキスト */
+.bold-text {
+    font-weight: 700;
 }

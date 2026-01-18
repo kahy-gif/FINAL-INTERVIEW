@@ -5,6 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollVideo = document.getElementById('scroll-video');
     const secondVideo = document.getElementById('loop-video');
     const contentOverlay = document.querySelector('.content-overlay');
+    const scrollIndicator = document.getElementById('scroll-indicator');
+
+    // ===== スクロール指示の非表示処理 =====
+    let hasScrolled = false;
+    window.addEventListener('scroll', () => {
+        if (!hasScrolled && window.scrollY > 50) {
+            hasScrolled = true;
+            scrollIndicator.classList.add('hidden');
+        }
+    });
 
     // ===== 状態管理 =====
     let currentPhase = 1;
