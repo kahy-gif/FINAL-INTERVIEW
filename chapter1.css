@@ -111,10 +111,14 @@ nav a:hover::after {
     width: 100%;
 }
 
+nav a.active::after {
+    width: 100%;
+}
+
 main {
     max-width: 1400px;
     margin: 6rem auto 3rem auto;
-    padding: 5rem 8rem;
+    padding: 3.5rem 8rem;
     background-color: rgba(230, 230, 230, 0.95);
     background-image: repeating-linear-gradient(
         transparent,
