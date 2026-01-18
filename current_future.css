@@ -61,20 +61,23 @@ body {
 
 header {
     background-color: #342C22;
-    padding: 1.5rem 3rem 1.5rem 8rem;
+    padding: 1.5rem 8rem;
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     width: 100%;
+    box-sizing: border-box;
     z-index: 1000;
     backdrop-filter: blur(10px);
     border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     gap: 4.5rem;
     max-width: 1200px;
@@ -121,12 +124,14 @@ nav a.active::after {
     bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1500;
+    z-index: 2000;
     text-align: center;
-    color: #fff;
-    font-size: 1rem;
+    color: #000;
+    font-size: 1.3rem;
     opacity: 1;
     transition: opacity 0.5s ease;
+    pointer-events: none;
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.8);
 }
 
 .scroll-indicator.hidden {
@@ -141,8 +146,7 @@ nav a.active::after {
 }
 
 .scroll-arrow {
-    font-size: 2rem;
-    animation: bounce 2s infinite;
+    font-size: 2.5rem;
 }
 
 @keyframes bounce {
