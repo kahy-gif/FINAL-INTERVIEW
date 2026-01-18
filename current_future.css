@@ -242,3 +242,12 @@ main {
 .bold-text {
     font-weight: 700;
 }
+
+/* 終わりの文字 */
+.ending {
+    text-align: right;
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-top: 5rem;
+    padding-right: 3rem;
+}
