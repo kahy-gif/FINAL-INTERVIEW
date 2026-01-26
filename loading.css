@@ -1,4 +1,4 @@
-/* ローディング画面 - シンプルで雰囲気を壊さないデザイン */
+/* ローディング画面 - 手書き風テキストアニメーション */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -21,29 +21,29 @@
 
 .loading-content {
     text-align: center;
+    position: relative;
 }
 
-/* シンプルな回転アニメーション */
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid rgba(255, 255, 255, 0.1);
-    border-top: 3px solid rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
+/* テキスト表示 */
+.loading-text {
+    font-family: "游明朝", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HG明朝E", "MS P明朝", "MS PMincho", serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    font-weight: 400;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.loading-dots {
+    display: inline-block;
+    width: 3em;
+    text-align: left;
 }
 
 /* レスポンシブデザイン - モバイル最適化 */
 @media (max-width: 768px) {
-    .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border-width: 2px;
+    .loading-text {
+        font-size: 1rem;
+        padding: 0 1rem;
     }
 }
