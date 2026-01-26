@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="第一章：沈黙と咆哮の狭間で。菊池智也の幼少期と画家への夢">
+    <meta property="og:title" content="菊池智也さんインタビュー - 第一章">
+    <meta property="og:description" content="沈黙と咆哮の狭間で育った少年時代">
+    <meta property="og:type" content="website">
     <title>菊池智也さんインタビュー - 第一章</title>
     <link rel="stylesheet" href="chapter1.css">
+    <link rel="stylesheet" href="loading.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    
     <!-- スクロール領域を確保するためのコンテナ -->
     <div class="scroll-container">
         <!-- 動画コンテナ: position: fixedでその場に固定 -->
         <div class="video-container">
             <!-- スクロール連動動画 -->
-            <video id="scroll-video" class="video" src="chp1_ing.mp4" muted playsinline preload="auto"></video>
+            <video id="scroll-video" class="video" src="chp1_ing.mp4" muted playsinline preload="auto" aria-label="第一章背景動画"></video>
             
             <!-- 第2動画: 最後のフレームで停止 -->
-            <video id="loop-video" class="video" src="chp1_do.mp4" muted playsinline preload="auto"></video>
+            <video id="loop-video" class="video" src="chp1_do.mp4" muted playsinline preload="auto" aria-label="第一章背景ループ動画"></video>
         </div>
 
         <!-- スクロール指示: 独立した要素として配置 -->
@@ -39,12 +51,12 @@
     </header>
     <main>
         <section id="chapter1">
-            <h1 class="title">第一章：沈黙と咆哮の狭間で</h1>
+            <h1 class="title">第一章：沈黙と<ruby>咆哮<rt>ほうこう</rt></ruby>の狭間で</h1>
             
             <div class="text-content">
                 <p class="content indent-1">昭和34年、秋の気配が漂い始めた9月8日。茨城県大子町に一人の男の子が生まれた。名を智也という。</p>
                 
-                <p class="content indent-2">彼の幼少期を彩ったのは、穏やかな田舎の風景とは裏腹な、張り詰めた緊張感だった。それは「家」という名の檻の中にあった。</p>
+                <p class="content indent-2">彼の幼少期を<ruby>彩<rt>いろど</rt></ruby>ったのは、穏やかな田舎の風景とは裏腹な、張り詰めた緊張感だった。それは「家」という名の檻の中にあった。</p>
                 
                 <p class="content indent-3">食卓は、戦場にも似た規律に支配されていた。</p>
                 
@@ -56,7 +68,7 @@
                 
                 <p class="content indent-2"><span class="bold-text">幼い智也にとって、母とのコミュニケーションは、唇の動きを読むことではなかった。彼は、伝えたいことがあると『絵』を描いて母に見せていた。言葉では届かない想いも、絵なら母に真っ直ぐに届く。それが彼らにとっての日常会話だった。</span></p>
                 
-                <p class="content indent-2">母は優しかったが、その躾の厳しさは、自らの失われた夢を埋め合わせるかのように徹底されていた。</p>
+                <p class="content indent-2">母は優しかったが、その<ruby>躾<rt>しつけ</rt></ruby>の厳しさは、自らの失われた夢を埋め合わせるかのように徹底されていた。</p>
                 
                 <p class="content indent-3">そしてもう一人、絶対的な権力者として君臨していたのが父である。</p>
                 
@@ -80,7 +92,7 @@
                 
                 <p class="content indent-1">高校時代、一時的に絵筆を置き、サッカーボールを追いかけたこともあった。県大会3位という輝かしい成績を残しながらも、彼はふと冷めてしまう。「所詮、こんなものか」。ある程度極めると先が見えてしまい、飽きてしまう。それは彼の性分だったのかもしれない。</p>
                 
-                <p class="content indent-2">だが、絵画だけは違った。飽きることなく、彼は美大への道を進む。学費が途絶えるという苦境も、恩師の助けを借りて乗り越えた。</p>
+                <p class="content indent-2">だが、絵画だけは違った。飽きることなく、彼は美大への道を進む。学費が途絶えるという<ruby>苦境<rt>くきょう</rt></ruby>も、恩師の助けを借りて乗り越えた。</p>
                 
                 <p class="content indent-3">彼の視線の先には、日本の田舎も、窮屈な実家も見えていなかった。見えていたのは、海を越えた遥か彼方、情熱の国・スペインだった。</p>
             </div>
@@ -92,6 +104,7 @@
     </main>
         </div>
     </div>
+    <script src="loading.js"></script>
     <script src="chapter1.js"></script>
 </body>
 </html>

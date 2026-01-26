@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="第三章：紫煙の向こうの羅針盤。長谷寺での修行と人生の転機">
+    <meta property="og:title" content="菊池智也さんインタビュー - 第三章">
+    <meta property="og:description" content="紫煙の向こうの羅針盤">
+    <meta property="og:type" content="website">
     <title>菊池智也さんインタビュー - 第三章</title>
     <link rel="stylesheet" href="chapter3.css">
+    <link rel="stylesheet" href="loading.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    
     <!-- スクロール領域を確保するためのコンテナ -->
     <div class="scroll-container">
         <!-- 動画コンテナ: position: fixedでその場に固定 -->
         <div class="video-container">
             <!-- スクロール連動動画 -->
-            <video id="scroll-video" class="video" src="temple_ing.mp4" muted playsinline preload="auto"></video>
+            <video id="scroll-video" class="video" src="temple_ing.mp4" muted playsinline preload="auto" aria-label="第三章背景動画"></video>
             
             <!-- 第2動画: 最後のフレームで停止 -->
-            <video id="loop-video" class="video" src="chp3.mp4" muted playsinline preload="auto"></video>
+            <video id="loop-video" class="video" src="chp3.mp4" muted playsinline preload="auto" aria-label="第三章背景ループ動画"></video>
         </div>
 
         <!-- スクロール指示: 独立した要素として配置 -->
@@ -39,7 +51,7 @@
             </header>
             <main>
                 <section id="chapter3">
-                    <h1 class="title">第三章：紫煙の向こうの羅針盤</h1>
+                    <h1 class="title">第三章：紫煙の向こうの<ruby>羅針盤<rt>らしんばん</rt></ruby></h1>
                     
                     <div class="text-content">
                         <p class="content indent-1">望まぬ衣をまとった智也の心は、荒れに荒れていた。</p>
@@ -49,19 +61,19 @@
                         <p class="content indent-1">そんな無言の抵抗を続けていた彼に、兄は愛想を尽かし、そして最後の賭けに出た。</p>
                         <p class="content indent-4 dialogue">「お前のような奴は、ここではダメだ」</p>
                         
-                        <p class="content indent-2">行き先は奈良県、長谷寺。古都の山深い場所にある、修行の道場だった。</p>
+                        <p class="content indent-2">行き先は奈良県、<ruby>長谷寺<rt>はせでら</rt></ruby>。古都の山深い場所にある、修行の道場だった。</p>
                         <p class="content indent-3 dialogue">「茨城の暴れん坊が来るらしい」</p>
-                        <p class="content indent-1">そんな噂と共に長谷寺に放り込まれた智也。31歳になっていた彼の心は、依然として頑ななままだった。</p>
+                        <p class="content indent-1">そんな噂と共に<ruby>長谷寺<rt>はせでら</rt></ruby>に放り込まれた智也。31歳になっていた彼の心は、依然として頑ななままだった。</p>
                         
                         <p class="content indent-2">ある日のことだ。修行の合間の、ほんのわずかな休息時間。</p>
-                        <p class="content indent-1">長谷寺の規律は厳しいが、その日は特別に空気が緩んでいたのかもしれない。</p>
+                        <p class="content indent-1"><ruby>長谷寺<rt>はせでら</rt></ruby>の規律は厳しいが、その日は特別に空気が緩んでいたのかもしれない。</p>
                         <p class="content indent-3">修行僧たちを束ねる指導的な立場の高僧が、ふらりと智也に近づいてきた。</p>
                         
                         <p class="content indent-5 dialogue">「おい、タバコ吸うか？」</p>
                         
-                        <p class="content indent-2">差し出された一本。神聖な修行の場に似つかわしくない、俗世の嗜好品。</p>
+                        <p class="content indent-2">差し出された一本。神聖な修行の場に似つかわしくない、<ruby>俗世<rt>ぞくせ</rt></ruby>の<ruby>嗜好品<rt>しこうひん</rt></ruby>。</p>
                         <p class="content indent-1">智也は驚きつつも、その誘いに乗った。</p>
-                        <p class="content indent-3">火を点ける。チリチリと葉が燃える音。細く立ち上る紫煙が、奈良の古寺の空気に溶けていく。</p>
+                        <p class="content indent-3">火を点ける。チリチリと葉が燃える音。細く立ち上る<ruby>紫煙<rt>しえん</rt></ruby>が、奈良の<ruby>古寺<rt>こじ</rt></ruby>の空気に溶けていく。</p>
                         <p class="content indent-2">二人の男が並んで煙をくゆらせる。張り詰めた修行の日々の中で、ふと訪れた奇妙な静寂だった。</p>
                         
                         <p class="content indent-1">その時、高僧が不意に口を開いた。</p>
@@ -87,7 +99,7 @@
                         <p class="content indent-3 dialogue emphasis">「違うだろう。自分自身だ。俺はな、神様や仏様に自分の運命を決められたんじゃ、死んでも死にきれないんだよ」</p>
                         
                         <p class="content indent-2">ドクン、と心臓が跳ねた。</p>
-                        <p class="content indent-1">頭を鈍器で殴られたような衝撃が走った。</p>
+                        <p class="content indent-1">頭を<ruby>鈍器<rt>どんき</rt></ruby>で殴られたような衝撃が走った。</p>
                         <p class="content indent-3">これまで智也が抱いていた「宗教」への偏見――目に見えない力に依存し、運命論に逃げ込む世界――が、音を立てて崩れ去った。</p>
                         
                         <p class="content indent-2">目の前にいるこの男は、袈裟を着ていようとも、自分と同じ「魂」を持っていた。いや、自分以上に強く、自分の足で立っていた。</p>
@@ -98,7 +110,7 @@
                         <p class="content indent-2">嫌でたまらなかったこの場所で、初めて彼は思った。</p>
                         <p class="content indent-3 thought">（この人についていこう）</p>
                         
-                        <p class="content indent-2">一本のタバコの煙が、彼の人生の羅針盤となった瞬間だった。</p>
+                        <p class="content indent-2">一本のタバコの煙が、彼の人生の<ruby>羅針盤<rt>らしんばん</rt></ruby>となった瞬間だった。</p>
                     </div>
                 </section>
                 <nav class="chapter-navigation">
@@ -108,6 +120,7 @@
             </main>
         </div>
     </div>
+    <script src="loading.js"></script>
     <script src="chapter3.js"></script>
 </body>
 </html>

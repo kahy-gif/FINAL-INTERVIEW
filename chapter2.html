@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="第二章：砕かれた夢、強制された袈裟。画家からお坊さんへの転機">
+    <meta property="og:title" content="菊池智也さんインタビュー - 第二章">
+    <meta property="og:description" content="砕かれた夢、強制された袈裟">
+    <meta property="og:type" content="website">
     <title>菊池智也さんインタビュー - 第二章</title>
     <link rel="stylesheet" href="chapter2.css">
+    <link rel="stylesheet" href="loading.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    
     <!-- スクロール領域を確保するためのコンテナ -->
     <div class="scroll-container">
         <!-- 動画コンテナ: position: fixedでその場に固定 -->
         <div class="video-container">
             <!-- スクロール連動動画 -->
-            <video id="scroll-video" class="video" src="town_ingg.mp4" muted playsinline preload="auto"></video>
+            <video id="scroll-video" class="video" src="town_ingg.mp4" muted playsinline preload="auto" aria-label="第二章背景動画"></video>
             
             <!-- 第2動画: 最後のフレームで停止 -->
-            <video id="loop-video" class="video" src="town_dooo.mp4" muted playsinline preload="auto"></video>
+            <video id="loop-video" class="video" src="town_dooo.mp4" muted playsinline preload="auto" aria-label="第二章背景ループ動画"></video>
         </div>
 
         <!-- スクロール指示: 独立した要素として配置 -->
@@ -39,7 +51,7 @@
             </header>
             <main>
                 <section id="chapter2">
-                    <h1 class="title">第二章：砕かれた夢、強制された袈裟</h1>
+                    <h1 class="title">第二章：砕かれた夢、強制された<ruby>袈裟<rt>けさ</rt></ruby></h1>
                     
                     <div class="text-content">
                         <p class="content indent-1">美大を卒業し、デザイナーとして働き始めた智也の日常は、希望に満ちていた。</p>
@@ -56,7 +68,7 @@
                         
                         <p class="content indent-5 dialogue emphasis">「坊さんになれ」</p>
                         
-                        <p class="content indent-3">耳を疑った。当時の智也にとって、宗教とは最も忌み嫌うものだった。「目に見えないもの」にすがる弱さ。神や仏に祈る時間があるなら、自分の手で人生を切り開く。それが彼の信条だったからだ。</p>
+                        <p class="content indent-3">耳を疑った。当時の智也にとって、宗教とは最も<ruby>忌<rt>い</rt></ruby>み<ruby>嫌<rt>きら</rt></ruby>うものだった。「目に見えないもの」にすがる弱さ。神や仏に祈る時間があるなら、自分の手で人生を切り開く。それが彼の信条だったからだ。</p>
                         
                         <p class="content indent-1">「ふざけるな」と断る智也。だが、状況は彼を逃さなかった。</p>
                         
@@ -64,7 +76,7 @@
                         
                         <p class="content indent-3">抵抗する智也を追い詰めたのは、まさかの「実力行使」だった。</p>
                         
-                        <p class="content indent-1">ある日、会社に12人もの檀家たちが押しかけてきたのだ。さらに、頼みの綱であった会社の上司からも、彼に引導を渡す。</p>
+                        <p class="content indent-1">ある日、会社に12人もの<ruby>檀家<rt>だんか</rt></ruby>たちが押しかけてきたのだ。さらに、頼みの<ruby>綱<rt>つな</rt></ruby>であった会社の上司からも、彼に<ruby>引導<rt>いんどう</rt></ruby>を渡す。</p>
                         
                         <p class="content indent-4 dialogue emphasis">「会社はお前一人が抜けても回る。だが、寺はお前がいないと回らないんだ」</p>
                         
@@ -84,6 +96,7 @@
             </main>
         </div>
     </div>
+    <script src="loading.js"></script>
     <script src="chapter2.js"></script>
 </body>
 </html>

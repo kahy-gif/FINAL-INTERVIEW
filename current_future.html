@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="エピローグ：人間を探求する旅へ。菊池智也の現在と未来">
+    <meta property="og:title" content="菊池智也さんインタビュー - エピローグ">
+    <meta property="og:description" content="人間を探求する旅へ">
+    <meta property="og:type" content="website">
     <title>菊池智也さんインタビュー - エピローグ</title>
     <link rel="stylesheet" href="current_future.css">
+    <link rel="stylesheet" href="loading.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <!-- ローディング画面 -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+    
     <!-- スクロール領域を確保するためのコンテナ -->
     <div class="scroll-container">
         <!-- 動画コンテナ: position: fixedでその場に固定 -->
         <div class="video-container">
             <!-- スクロール連動動画 -->
-            <video id="scroll-video" class="video" src="last_ing.mp4" muted playsinline preload="auto"></video>
+            <video id="scroll-video" class="video" src="last_ing.mp4" muted playsinline preload="auto" aria-label="エピローグ背景動画"></video>
             
             <!-- 第2動画: 最後のフレームで停止 -->
-            <video id="loop-video" class="video" src="last_do.mp4" muted playsinline preload="auto"></video>
+            <video id="loop-video" class="video" src="last_do.mp4" muted playsinline preload="auto" aria-label="エピローグ背景ループ動画"></video>
         </div>
 
         <!-- スクロール指示: 独立した要素として配置 -->
@@ -46,11 +58,11 @@
                         
                         <p class="content indent-2">かつての芸術への情熱を取り戻し、演劇、写真、映画と、様々なジャンルの人々と交流を深めた。</p>
                         
-                        <p class="content indent-3">だが、人生の荒波はまだ終わらない。</p>
+                        <p class="content indent-3">だが、人生の<ruby>荒波<rt>あらなみ</rt></ruby>はまだ終わらない。</p>
                         
                         <p class="content indent-1">あまりに精力的すぎた代償か、彼は「ギラン・バレー症候群」という難病に倒れる。全身の筋肉が麻痺し、動けなくなる病だ。</p>
                         
-                        <p class="content indent-2">しかし、その病床で彼が見たものは、絶望ではなく「光」だった。</p>
+                        <p class="content indent-2">しかし、その<ruby>病床<rt>びょうしょう</rt></ruby>で彼が見たものは、絶望ではなく「光」だった。</p>
                         
                         <p class="content indent-4">医師、看護師、清掃員。下の世話をしてくれる人々。</p>
                         
@@ -60,7 +72,7 @@
                         
                         <p class="content indent-2">その温かい事実は、修行時代の悟りとはまた違う、柔らかな衝撃として彼を変えた。</p>
                         
-                        <p class="content indent-1">現在、菊池智也は、お坊さんとしての活動の傍ら、絵を描き、演じ、書き続けている。</p>
+                        <p class="content indent-1">現在、菊池智也は、お坊さんとしての活動の<ruby>傍<rt>かたわ</rt></ruby>ら、絵を描き、演じ、書き続けている。</p>
                         
                         <p class="content indent-3">彼の目標は「宗教からの自立」だ。</p>
                         
@@ -80,7 +92,7 @@
                         
                         <p class="content indent-2">だが、その笑顔には一点の曇りもないだろう。なぜなら、回り道に見えたその全てが、今の「菊池智也」という人間を作り上げる、かけがえのない絵の具だったのだから。</p>
                         
-                        <p class="content indent-3">波乱万丈な人生のキャンバスには、これからも彼自身の手によって、鮮やかな色が塗り重ねられていく。</p>
+                        <p class="content indent-3"><ruby>波乱万丈<rt>はらんばんじょう</rt></ruby>な人生のキャンバスには、これからも彼自身の手によって、鮮やかな色が塗り重ねられていく。</p>
                         
                         <p class="content indent-4 emphasis">怖がらず、動け。</p>
                         
@@ -96,6 +108,7 @@
             </main>
         </div>
     </div>
+    <script src="loading.js"></script>
     <script src="current_future.js"></script>
 </body>
 </html>
